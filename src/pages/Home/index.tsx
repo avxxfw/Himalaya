@@ -38,7 +38,7 @@ class Home extends React.Component<IProps, IState> {
       type: 'home/fetchCarousels',
     });
     dispatch({
-      type: 'home/fechChannels',
+      type: 'home/fetchChannels',
     });
   }
 
@@ -70,7 +70,15 @@ class Home extends React.Component<IProps, IState> {
   };
 
   renderItem = ({item}: ListRenderItemInfo<IChannel>) => {
-    return <ChannelItem data={item} onPress={this.onPress} />;
+    class Item extends React.PureComponent<{
+      onPress: (...args: any[]) => void;
+    }> {
+      render() {
+        return <ChannelItem data={item} onPress={this.props.onPress} />;
+      }
+    }
+
+    return <Item onPress={this.onPress} />;
   };
 
   onEndReached = () => {

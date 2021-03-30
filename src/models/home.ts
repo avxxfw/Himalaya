@@ -87,7 +87,7 @@ const homeModel: HomeModel = {
       yield put({
         type: 'setState',
         payload: {
-          carousels: data.data,
+          carousels: data,
         },
       });
     },
@@ -96,7 +96,7 @@ const homeModel: HomeModel = {
       yield put({
         type: 'setState',
         payload: {
-          guess: data.data,
+          guess: data,
         },
       });
     },
@@ -129,7 +129,7 @@ const homeModel: HomeModel = {
         },
       });
       if (typeof callback === 'function') {
-        callback;
+        callback();
       }
     },
   },
